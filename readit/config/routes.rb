@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  get 'stories/index'
 
-  # get 'stories/new'
-  resources :stories
+  resources :stories do
+    resources :votes
+  end
+
+  get 'votes/create'
+  get 'stories/index'
 
 end
