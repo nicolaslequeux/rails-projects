@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+
+  <div class="panel-heading">Se connecter</div>
+
+  <div class="panel-body">
+
+    <%= form_for :user, url: new_session_path, html: {class: "form-horizontal"} do |f| %>
+
+      <div class="form-group">
+        <%= f.label :username, "Nom d'utilisateur ou email", class: "col-md-4 control-label" %>
+        <div class="col-md-6">
+          <%= f.text_field :username, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, "Password", class: "col-md-4 control-label" %>
+        <div class="col-md-6">
+          <%= f.password_field :password, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-6 col-md-offset-4">
+          <button type="submit" class="btn btn-primary">Se connecter</button>
+          <a href="<%= new_password_path %>" class="btn bnt-link">Mot de passe oublié</a>
+        </div>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>
