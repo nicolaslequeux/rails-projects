@@ -1,6 +1,9 @@
+
 document.querySelector("#vote_score").innerText = "Score: <%= @story.votes.size %>";
 document.querySelector("#vote_score").style.backgroundColor = "#ffffcc";
 
 setTimeout(function(){
   document.querySelector("#vote_score").style.backgroundColor = "#ffffff"
 }, 1000);
+
+$("#vote_history").html('<%= j(render partial: "votes/vote", collection: @story.votes) %>');

@@ -14,6 +14,9 @@
  *= require_self
  */
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 body {
   background-color: #666;
   margin: 15px 25px;
@@ -31,7 +34,12 @@ input {
 #content {
   background-color: #fff;
   border: 10px solid #ccc;
-  padding: 10px 10px 20px 10px
+  padding: 10px 10px 20px 10px;
+  overflow: hidden;
+}
+
+* html #content {
+  height: 1%;
 }
 
 #notification {
@@ -52,4 +60,15 @@ input {
 
 .form_error {
   color: red;
+}
+
+#vote_history {
+  padding: 5px;
+  margin: 0;
+  list-style: none;
+  border: 3px solid #ccc;
+  background-color: #eee;
+  float: right;
+  color: #999;
+  font-size: smaller;
 }

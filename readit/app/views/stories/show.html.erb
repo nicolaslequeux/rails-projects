@@ -1,10 +1,20 @@
-
 <h2>
   <span id="vote_score">
-    Score: <%= @story.votes.size %>
+    Score: <%= @story.votes.count %>
   </span>
   <%= @story.name %>
 </h2>
+
+<ul id="vote_history">
+  <% if @story.votes.empty? %>
+    <em>No votes yet!</em>
+  <% else %>
+  <!-- Rend tout la collection, comme un .each avec le partial -->
+    <%= render partial: 'votes/vote', collection: @story.votes.order('id ASC').reverse_order %>
+    <!-- Rend just le dernier élément -->
+    <!-- <#%= render partial: 'votes/vote', object: @story.votes.last %> -->
+  <% end %>
+</ul>
 
 <p>
   <%=  link_to @story.link, @story.link %>
