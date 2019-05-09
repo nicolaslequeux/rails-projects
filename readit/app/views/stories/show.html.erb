@@ -9,10 +9,12 @@
   <% if @story.votes.empty? %>
     <em>No votes yet!</em>
   <% else %>
-  <!-- Rend tout la collection, comme un .each avec le partial -->
-    <%= render partial: 'votes/vote', collection: @story.votes.order('id ASC').reverse_order %>
-    <!-- Rend just le dernier élément -->
-    <!-- <#%= render partial: 'votes/vote', object: @story.votes.last %> -->
+<!-- Rend tout la collection, comme un .each avec le partial -->
+<!-- <%#= render partial: 'votes/vote', collection: @story.votes.order('id ASC').reverse_order %> -->
+<!-- Rend just le dernier élément -->
+<!-- <#%= render partial: 'votes/vote', object: @story.votes.last %> -->
+<!-- version finale avec method -->
+    <%= render partial: 'votes/vote', collection: @story.votes.latest %>
   <% end %>
 </ul>
 

@@ -1,9 +1,21 @@
 require 'test_helper'
 
 class VotesControllerTest < ActionDispatch::IntegrationTest
-  test "should get create" do
-    get votes_create_url
+
+  test "create votes" do
+    assert_difference 'stories(:two).votes.count' do
+      post story_votes_path(stories(:two))
+    end
+  end
+
+  test "create vote with ajax" do
+    post story_votes_path(stories(:two)), xhr: true
     assert_response :success
+  end
+
+  test "redirect after vote with http post (no ajax)" do
+    post story_votes_path(stories(:two))
+    assert_redirected_to story_path(stories(:two))
   end
 
 end

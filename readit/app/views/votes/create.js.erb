@@ -6,4 +6,4 @@ setTimeout(function(){
   document.querySelector("#vote_score").style.backgroundColor = "#ffffff"
 }, 1000);
 
-$("#vote_history").html('<%= j(render partial: "votes/vote", collection: @story.votes) %>');
+$("#vote_history").html('<%= j(render partial: "votes/vote", collection: @story.votes.latest) %>');
