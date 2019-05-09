@@ -1,0 +1,13 @@
+<h1>Stories#index</h1>
+<p>Find me in app/views/stories/index.html.erb</p>
+
+<p><%= @current_time %></p>
+
+<!-- version 1 -->
+<!-- <p><#%= @story.name %> : <#%= link_to @story.name, @story.link %></p>
+ -->
+<!-- version 2 -->
+<!-- <p><#%= link_to @story.name, story_path(@story) %></p> -->
+
+<!-- versions 3 -->
+<p><%= link_to @story.name, @story %></p>

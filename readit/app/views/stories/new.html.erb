@@ -1,0 +1,22 @@
+<% if @story.errors.any? %>
+  <div class="form_error">
+    <h3>Errors</h3>
+    <ul>
+      <% @story.errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @story do |f| %>
+  <div>
+    <p><%= f.label :name %></p>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <p><%= f.label :link %></p>
+    <%= f.text_field :link %>
+  </div>
+  <%= submit_tag %>
+<% end %>
