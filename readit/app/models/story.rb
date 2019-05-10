@@ -1,4 +1,5 @@
 class Story < ApplicationRecord
+  belongs_to :user
 
   validates :name, :link, presence: true
 

@@ -72,3 +72,25 @@ input {
   color: #999;
   font-size: smaller;
 }
+
+#login_logout {
+  float: right;
+  color: #999;
+  font-size: smaller;
+}
+
+#navigation {
+  list-style: none;
+  padding: 5px 0;
+  margin: 10px;
+}
+
+#navigation li {
+  display: inline;
+  padding: 10px 10px;
+}
+
+#navigation li a {
+  color: #fff;
+}
+

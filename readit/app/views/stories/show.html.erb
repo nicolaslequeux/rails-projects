@@ -18,6 +18,11 @@
   <% end %>
 </ul>
 
+<p class="submitted_by">
+  Subbmited by:
+  <span><%= @story.user.name %></span>
+</p>
+
 <p>
   <%=  link_to @story.link, @story.link %>
 </p>

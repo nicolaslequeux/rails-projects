@@ -6,4 +6,8 @@ class VoteTest < ActiveSupport::TestCase
     assert_equal stories(:one), votes(:one).story
   end
 
+  test "vote is associated with a user" do
+    assert_equal users(:john), votes(:two).user
+  end
+
 end

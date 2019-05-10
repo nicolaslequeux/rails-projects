@@ -17,9 +17,9 @@ class StoryTest < ActiveSupport::TestCase
     refute s.valid?
   end
 
-  test "is not valid with require attributes" do
-    s = Story.create(
-      name: 'test-name',
+  test "is valid with require attributes" do
+    s = users(:glenn).stories.create(
+      name: 'My test submission',
       link: 'http://www.testsubmission.com/')
     assert s.valid?
   end
@@ -30,9 +30,14 @@ class StoryTest < ActiveSupport::TestCase
   end
 
   test "returns 3 latest votes" do
-    10.times { stories(:one).votes.create }
+    10.times { stories(:one).votes.create(user: users(:glenn)) }
     assert_equal 3, stories(:one).votes.latest.size
   end
+
+  test "is associated with a user" do
+    assert_equal users(:glenn), stories(:one).user
+  end
+
 
 
 end
