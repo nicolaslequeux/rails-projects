@@ -2,20 +2,25 @@ require 'test_helper'
 
 class VotesControllerTest < ActionDispatch::IntegrationTest
 
-  test "create votes" do
+# NLX : if you would like to run a block of code before the start of each test
+#       and another block of code after the end of each test,
+#       you have two special callbacks for your rescue (setup/teardown)
+
+  def setup
+    login_user
+  end
+
+  def teardown
+    logout_user
+  end
+
+
+  test "creates vote" do
+    # login_user
     assert_difference 'stories(:two).votes.count' do
       post story_votes_path(stories(:two))
     end
   end
 
-  test "create vote with ajax" do
-    post story_votes_path(stories(:two)), xhr: true
-    assert_response :success
-  end
-
-  test "redirect after vote with http post (no ajax)" do
-    post story_votes_path(stories(:two))
-    assert_redirected_to story_path(stories(:two))
-  end
 
 end

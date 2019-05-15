@@ -18,7 +18,7 @@
         Logged in as: <%= @current_user.name %>
         <em><%= link_to "(Logout)", session_path, method: :delete %></em>
       <% else %>
-        <em><%= "Not logged in" %></em>
+        <em><%= "Not logged in. " %></em>
         <%= link_to "Login",new_session_path %>
       <% end %>
     </div>

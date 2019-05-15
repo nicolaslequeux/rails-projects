@@ -12,8 +12,8 @@ class StoriesController < ApplicationController
   end
 
   def create
-    #@story = Story.new(params[:story].permit!)
-    #@story = Story.new(story_params)
+    ### Memo@story = Story.new(params[:story].permit!)
+    #@story = Story.new(story_params) ##Should be
     @story = @current_user.stories.build story_params
 
     #if @story.valid?
