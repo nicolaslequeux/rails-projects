@@ -9,6 +9,8 @@ class Story < ApplicationRecord
     end
   end
 
+  scope :upcoming, -> { where("votes_count < 5").order("id DESC") }
+  scope :popular, -> { where("votes_count >= 5").order("id DESC") }
 
   # override to_param in the model to make user_path construct a path
   # using the user's name instead of the user's id:

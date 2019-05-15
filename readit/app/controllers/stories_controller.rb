@@ -4,7 +4,12 @@ class StoriesController < ApplicationController
 
   def index
     @current_time = Time.now
-    @story = Story.first
+    # @story = Story.first
+    # @stories = Story.where('votes_count >= 5').order('id DESC')
+
+    #@stories = fetch_stories 'votes_count >= 5'
+    # Après creation "scope" la methode "fetch_stories" devient inutile!
+    @stories = Story.popular
   end
 
   def new
@@ -30,11 +35,20 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
   end
 
+  def bin
+    # @stories = fetch_stories("votes_count < 5")
+    @stories = Story.upcoming
+    render action: "index"
+  end
 
   private
 
   def story_params
     params.require(:story).permit(:name, :link)
   end
+
+  # def fetch_stories(condition)
+  #   @stories = Story.where(condition).order("id DESC")
+  # end
 
 end
