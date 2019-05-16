@@ -44,7 +44,6 @@ class StoriesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-
   test "show story submitter" do
     get story_path(stories(:one))
     assert_select 'p.submitted_by span', 'Glenn Goodrich'
@@ -57,7 +56,7 @@ class StoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "show navigation menu" do
     get stories_path
-    assert_select 'ul#navigation li', 2
+    assert_select 'ul#navigation li', 3
   end
 
 

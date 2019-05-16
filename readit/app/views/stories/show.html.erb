@@ -20,7 +20,7 @@
 
 <p class="submitted_by">
   Subbmited by:
-  <span><%= @story.user.name %></span>
+  <span><%= @story.name %></span>
 </p>
 
 <p>
@@ -32,3 +32,21 @@
     <%= submit_tag 'Vote for it' %>
   <% end %>
 </div>
+
+
+<% if logged_in? %>
+  <div id="vote_form">
+    <%= form_for [@story, Vote.new], remote: true do %>
+    <%= submit_tag 'vote' %>
+    <% end %>
+  </div>
+<% else %>
+  <p>
+    <em>
+      You would be able to vote for this story if you were
+      <%= link_to 'logged in', new_session_path %>!
+    </em>
+  </p>
+<% end %>
+
+
