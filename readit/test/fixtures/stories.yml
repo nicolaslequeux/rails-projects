@@ -4,8 +4,10 @@ one:
   name: My old weblog
   link: http://ruprict.net
   user: glenn
+  votes_count: 2
 
 two:
   name: SitePoint Forums
   link: http://community.sitepoint.com
   user: glenn
+  votes_count: 0

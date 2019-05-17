@@ -18,7 +18,7 @@ class StoriesControllerTest < ActionDispatch::IntegrationTest
   test "new shows new form" do
     login_user
     get new_story_path
-    assert_select 'form div', count: 2
+    assert_select 'form div', count: 3
   end
 
   test "adds a story" do
@@ -59,7 +59,17 @@ class StoriesControllerTest < ActionDispatch::IntegrationTest
     assert_select 'ul#navigation li', 3
   end
 
+  test "increments vote counter cache" do
+    stories(:two).votes.create(user: users(:glenn))
+    stories(:two).reload
+    assert_equal 1, stories(:two).attributes['votes_count']
+  end
 
+  test "decrements votes counter cache" do
+    stories(:one).votes.first.destroy
+    stories(:one).reload
+    assert_equal 1, stories(:one).attributes['votes_count']
+  end
 
 
 end
