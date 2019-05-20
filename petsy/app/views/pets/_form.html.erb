@@ -1,0 +1,49 @@
+<%= form_for pet, html: {class: 'form-horizontal'} do |f| %>
+
+  <% if pet.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% pet.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, "Nom", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :species_id, "Espèce", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.select :species_id, Species.pluck(:name, :id), {}, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :gender, "Sexe", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.select :gender, {Male: :M, Femelle: :F}, {}, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :birthday, "Date de naissance", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.date_select :birthday, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-6 col-md-offset-4">
+      <button type="submit" class="btn btn-primary">
+        <%= pet.new_record? ? 'Créer' : 'Modifier' %>
+      </button>
+    </div>
+  </div>
+
+<% end %>

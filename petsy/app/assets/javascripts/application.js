@@ -13,7 +13,13 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
 
 //= require jquery
 //= require bootstrap-sprockets
+
+//= require flatpickr
+//= require_tree .
+//= require_self
+
+flatpickr('.form-datepicker');
+

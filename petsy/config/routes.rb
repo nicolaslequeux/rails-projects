@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :passwords, only: [:new, :create, :edit, :update]
 
+  resources :pets
+
   resources :users, only: [:new, :create] do
     member do
       get 'confirm'
