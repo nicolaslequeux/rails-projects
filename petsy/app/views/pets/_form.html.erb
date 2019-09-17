@@ -18,6 +18,13 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :avatar_file, "Avatar", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.file_field :avatar_file, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= f.label :species_id, "Espèce", class: "col-md-4 control-label" %>
     <div class="col-md-8">
       <%= f.select :species_id, Species.pluck(:name, :id), {}, class: "form-control" %>

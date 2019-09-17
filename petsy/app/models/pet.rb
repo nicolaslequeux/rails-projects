@@ -4,6 +4,8 @@ class Pet < ApplicationRecord
 
   validates :name, :gender, :birthday, presence: true
   validates :gender, format: { with: /\A(M|F)\z/}
+  validates :avatar_file, presence: true, on: :create
+
   validate :birthday_not_future
 
   def age

@@ -1,16 +1,12 @@
 class User < ApplicationRecord
 
-  attr_accessor :avatar_file
-
   has_many :pets
 
   has_secure_password
   has_secure_token :confirmation_token
   has_secure_token :recover_password
 
-  after_save :avatar_after_upload
-  before_save :avatar_before_upload
-  after_destroy_commit :avatar_destroy
+  has_image :avatar
 
   validates :username,
     format: {with: /\A[a-zA-Z0-9_]{3,20}\z/, message: "Ne doit contenir que des caractères alphanumériques"},
@@ -26,6 +22,18 @@ class User < ApplicationRecord
     {id: id}
   end
 
+
+=begin
+
+  attr_accessor :avatar_file
+
+  validates :avatar_file, file: {ext: [:jpg, :png]}
+
+  after_save :avatar_after_upload
+  before_save :avatar_before_upload
+  after_destroy_commit :avatar_destroy
+
+
   def avatar_path
     # exemple: '/public/users/id/avatar.jpg'
     File.join(
@@ -38,7 +46,6 @@ class User < ApplicationRecord
   def avatar_url
     '/' + [self.class.name.downcase.pluralize,id.to_s,'avatar.jpg'].join('/')
   end
-
 
   private
 
@@ -68,5 +75,7 @@ class User < ApplicationRecord
     dir = File.dirname(avatar_path)
     FileUtils.rm_r(dir) if Dir.exist?(dir)
   end
+
+=end
 
 end
